@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package cciserver.com.cciserver.main;
 
-import cciserver.com.cciserver.view.Principal;
+import cciserver.com.cciserver.util.AbrirFileChooser;
+import java.io.IOException;
 
 /**
  *
@@ -14,9 +11,10 @@ public class CciServer {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
-      new Principal().setVisible(true);
+    public static void main(String[] args) throws IOException {
+        new AbrirFileChooser().carregar();
     }
-    
+
 }

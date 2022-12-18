@@ -1,8 +1,5 @@
 package cciserver.com.cciserver.connection;
 
-import cciserver.com.cciserver.util.LocalUtil;
-import cciserver.com.cciserver.util.LogCatUtil;
-import cciserver.com.cciserver.util.TemplateAlerts;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -13,7 +10,6 @@ import javax.swing.JOptionPane;
  */
 public class ConnectionMySQL {
 
-    TemplateAlerts templateAlerts = new TemplateAlerts();
     private Connection con = null;
     private Statement statement;
     private ResultSet resultSet;
@@ -45,9 +41,7 @@ public class ConnectionMySQL {
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao conectar ao banco de dados",
                     "Erro", JOptionPane.ERROR_MESSAGE);
-            LocalUtil.logClass = this.getClass().getName();
-            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao conectar ao banco de dados"));
+
         }
         return this.getCon();
     }
@@ -63,9 +57,7 @@ public class ConnectionMySQL {
             setResultSet(getStatement().executeQuery(pSQL));
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERRO AO EXECUTAR A INSTRUÇÃO SQL\n ERRO AO CONECTAR AO BANCO DE DADOS", "ERRO", JOptionPane.ERROR_MESSAGE);
-            LocalUtil.logClass = this.getClass().getName();
-            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar a instrução sql\n" + e.toString()));
+
             return false;
         }
         return true;
@@ -88,9 +80,7 @@ public class ConnectionMySQL {
             JOptionPane.showMessageDialog(null, "OK");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "ERRO", "ERRO", JOptionPane.ERROR_MESSAGE);
-            LocalUtil.logClass = this.getClass().getName();
-            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao conectar ao banco de dados"));
+
             return 0;
         }
         return ultimoID;
@@ -107,9 +97,6 @@ public class ConnectionMySQL {
             this.getStatement().executeUpdate(pSQL);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao excluir/atualizar registro!\n" + e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
-            LocalUtil.logClass = this.getClass().getName();
-            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao executar insert/update\n" + e.toString()));
             return false;
         }
         return true;
@@ -147,9 +134,6 @@ public class ConnectionMySQL {
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão", "Erro", JOptionPane.ERROR_MESSAGE);
-            LocalUtil.logClass = this.getClass().getName();
-            LocalUtil.logType = templateAlerts.mensagemRegsitroErro();
-            new LogCatUtil().writeFile(String.valueOf("Ocorreu um erro ao fechar o banco de dados"));
         }
         return false;
     }

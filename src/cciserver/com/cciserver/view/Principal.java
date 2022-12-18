@@ -1,9 +1,6 @@
 package cciserver.com.cciserver.view;
 
-import java.awt.Desktop;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileSystemView;
+import java.io.IOException;
 
 /**
  *
@@ -13,9 +10,11 @@ public class Principal extends javax.swing.JFrame {
 
     /**
      * Creates new form Principal
+     *
+     * @throws java.io.IOException
      */
-    public Principal() {
-        carregar();
+    public Principal() throws IOException {
+//        carregar();
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -59,23 +58,6 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void carregar() {
-        File f = new File("\\\\servidor2\\servidor2");
-        FileSystemView fsv = FileSystemView.getFileSystemView();
-        f = fsv.getParentDirectory(f);
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(f);
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            fileChooser.getSelectedFile().setExecutable(true);
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-           
-            
-        }
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
