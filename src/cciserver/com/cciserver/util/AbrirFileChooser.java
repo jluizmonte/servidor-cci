@@ -15,8 +15,8 @@ public class AbrirFileChooser {
 
     public void carregar() throws IOException {
         Principal principal = new Principal();
-        //   File f = new File("\\\\servidor2\\servidor2");
-        File f = new File("");
+        File f = new File("\\\\servidor2\\servidor2");
+        //      File f = new File("");
         FileSystemView fsv = FileSystemView.getFileSystemView();
         f = fsv.getParentDirectory(f);
         JFileChooser fileChooser = new JFileChooser();
